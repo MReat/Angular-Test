@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<form>
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" ng-model="user.firstName">
+
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name"  ng-model="user.lastName">
+
+    <label for="email">eMail</label>
+    <input type="email" id="email" ng-model="user.email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" ng-model="user.password">
+</form>
+
+<div class="well">
+	<p> Welcome {{ user.firstName }} {{ user.lastName }}<br>
+    We will send a confirmation eMail to {{ user.email }}</p>  
+</div>
+
+
+</body>
+</html>

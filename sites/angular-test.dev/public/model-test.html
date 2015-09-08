@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Model Test</title>
+
+<script type="text/javascript" src="/js/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<style type="text/css">
+    body {
+        background-color: papayawhip;
+    }
+    input.ng-touched.ng-invalid,
+    select.ng-touched.ng-invalid {
+        border: 5px solid red;
+    }
+    .well {
+        border: 6px;
+        border-style: outset;
+    }
+
+</style>
+
+</head>
+
+<body ng-app="modelTest">
+
+<header class="page-header col-md-offset-1">
+    <h1>Sample Form</h1>
+</header>
+
+<main class="row">
+    <form class="container col-md-6 col-md-offset-1" novalidate name="userForm">
+
+<!--         <div class="form-group"
+        ng-class="{'has-error': userForm.first_name.$invalid && userForm.first_name.$touched, 'has-success': userForm.first_name.$valid && userForm.first_name.$touched}"
+        > -->
+        <div class="well">
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input class="form-control" type="text" id="first_name" ng-model="user.firstName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input class="form-control" type="text" id="last_name"  ng-model="user.lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">eMail</label>
+                <input class="form-control" type="email" id="email" ng-model="user.email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input class="form-control" type="date" id="dob" ng-model="user.dob" required>
+            </div>
+
+            <div class="form-group">
+                <label for="github">Github User Name</label>
+                <input class="form-control" type="text" id="github" ng-model="user.github" required>
+            </div>
+
+            <div class="form-group">
+                <label for="icon">Icon List</label>
+                <select class="form-control" id="icon" ng-model="user.icon" required>
+                    <option ng-repeat="pic in ['texas-flag', 'texas-tech', 'cowboys']">{{ pic }}</option>
+                </select>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="col-md-4">
+        <div class="well" ng-if="userForm.$valid">
+            <img src="/img/{{ user.icon }}.png" width="100" height="100">
+            <h4><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }} </h4>
+            <p><strong>DOB:</strong>  {{ user.dob | date: format: longDate }} </p>
+            <p><strong>eMail:</strong>  {{ user.email }} </p>
+            <p><strong>Github URL:</strong>  https://github.com/{{ user.github }} </p>
+    </div>
+</main>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/modelTest.js"></script>
+</body>
+</html>

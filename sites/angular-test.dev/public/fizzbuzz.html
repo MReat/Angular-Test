@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FizzBuzz in Angular</title>
+</head>
+<body ng-app="fizzbuzz">
+	<header>
+		<h1>FizzBuzz Challenge</h1>
+	</header>
+
+	<ul>
+		<li ng-repeat="num in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]">{{ num }}
+			<span ng-if="num % 5 == 0 && num % 3 == 0" ng-then="FIZZBUZZ"></span>
+			<span ng-hide="num % 3 == 0" ng-show="num % 3 == 0">FIZZ</span>
+			<span ng-show="num % 5 == 0">BUZZ</span>
+			<!-- <span ng-hide="num % 3 == 0 || num % 5 == 0"></span> -->
+		</li>
+	</ul>
+
+<script type="text/javascript" src="/js/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/fizzbuzz.js"></script>
+
+</body>
+</html>

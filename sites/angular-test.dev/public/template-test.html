@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+<style>
+	 
+li:first-child {
+     font-style: italic;
+ }
+ 
+li:last-child {
+     font-weight: bold;
+ }
+ </style>
+</head>
+
+<body ng-app="templateTest">
+
+	<ul> Repeat Loop 1-10
+	    <li ng-repeat="num in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+	        The number is: {{ num }} !
+	    </li>
+	</ul>
+
+	<ul> Repeat Loop with divisible by 3 =
+	    <li ng-repeat="num in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" ng-hide="num % 3 == 0">
+	        {{ num }} is not divisible by 3!
+	    </li>
+	</ul>
+
+	<ol> Repeat Loop = 
+	    <li ng-repeat="letter in ['A', 'B', 'C', 'D', 'E', 'F']">{{ letter | uppercase}}</li>
+	</ol>
+
+	<ol> Repeat Loop = 
+	    <li ng-repeat="letter in ['A', 'B', 'C', 'D', 'E', 'F']">{{ letter | lowercase}}</li>
+	</ol>
+
+	<img ng-repeat="pic in ['balloons.jpg', 'stylie_guitar.jpeg', 'codeup-arrow.png']" ng-src="/img/{{ pic }}" alt="Random Picture">
+
+
+<script type="text/javascript" src="/js/templateTest.js"></script>
+</body>
+</html>

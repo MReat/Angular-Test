@@ -1,0 +1,101 @@
+<html ng-app="controllerTest">
+<head>
+
+<title>Controller Test</title>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<style type="text/css">
+
+    body {
+        background-color: papayawhip;
+    }
+    input.ng-touched.ng-invalid,
+    select.ng-touched.ng-invalid {
+        border: 5px solid red;
+    }
+    .well {
+        border: 6px;
+        border-style: outset;
+    }
+
+</style>
+
+</head>
+<body>
+
+<header class="page-header col-md-offset-1">
+    <h1>Sample Item List</h1>
+</header>
+
+<main class="row">
+
+	<div ng-controller="CartController as item">
+	    <form class="container col-md-10 col-md-offset-1 responsive" novalidate name="itemForm"  ng-submit="item.addItem()">
+			<div class="well" >
+				<h3>Sell Items </h3>
+				<div class="row">
+			        <div class="form-group col-md-6">
+			            <label for="new_item">Item Name</label>
+			            <input class="form-control" type="text" name="name" ng-model="item.newItem.name" required>
+			        </div>
+
+			        <div class="form-group col-md-3">
+			            <label for="item_price">Item Price</label>
+			            <input class="form-control" type="number" name="price" ng-model="item.newItem.price" required>      
+			        </div>
+
+
+			         <div class="form-group col-md-2">
+			            <label for="item_quantity">Item Quantity</label>
+			            <input class="form-control" type="number" name="quantity" ng-model="item.newItem.quantity" required>
+			        </div> 
+
+			    </div>
+			    <button ng-if="itemForm.$valid">Add Item</button>
+		    </div>
+	    </form>
+	
+		<div class="container col-md-10 col-md-offset-1">
+	        <div class="well">
+        	<h3>Checkout</h3>
+	        	<div class="table-responsive">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<th>#</th>
+							<th>Item Name</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Subtotal</th>
+							<th>Remove</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="data in item.items">
+
+								<td> {{ $index }} </td>
+								<td> {{ data.name}} </td>
+								<td> {{ data.price | currency }} </td>
+								<td> {{ data.quantity }} </td>
+								<td> {{ data.price * data.quantity | currency}} </td>
+								<td><a class="btn btn-danger" ng-click="item.remove($index)">Remove Item</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="form-group col-md-5 col-md-offset-5">
+						<h4><strong>Total Subtotal</strong>= {{ item.itemTotal() | currency }}</h4>
+						<h4><strong>Total Taxes </strong>(8.125%) = {{ item.itemTaxes() | currency }}</h4>
+						<h4><strong>Total Shipping </strong>= {{ item.itemShipping() | currency }}</h4>
+						<h3><strong>Total Cost </strong>= {{ item.totalCost() | currency }}</h3>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<script type="text/javascript" src="/js/angular.min.js"></script>
+<script type="text/javascript" src="/js/controllerTest.js"></script>
+</body>
+</html>
